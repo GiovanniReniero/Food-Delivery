@@ -1,9 +1,11 @@
 require_relative "../repos/meals_repository.rb"
-#require_relative 'controller'
-require_relative '../router/router.rb'
+require_relative "../views/meal_view.rb"
+require_relative "../controllers/meal_controller.rb"
+require_relative "../router/router.rb"
 
 meals_repository = MealsRepository.new
-# view = View.new
-# controller = Controller.new(meals_repository, view)
-router = Router.new # (controller)
-router.run
+meal_view = MealView.new('')
+meal_controller = MealController.new(meal_view: meal_view, meals_repository: meals_repository) 
+start = Router.new(meal_controller)
+
+start.run

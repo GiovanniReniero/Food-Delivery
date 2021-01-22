@@ -3,8 +3,8 @@ require_relative "../repos/meals_repository.rb"
 
 class Router
   
-  def initialize
-    # @controller = controller
+  def initialize(controller)
+    @controller = controller
     @running = true
   end
   
@@ -26,17 +26,19 @@ class Router
     puts "What do you want to do next?"
     puts "1 - List all meals"
     puts "2 - Add a new meal"
-    puts "3 - Delete a meal"
-    puts "4 - Exit"
+
+    # puts "3 - Delete a meal"
+    puts "3 - Exit"
+
     print "> "
   end
 
   def route_action(action)
     case action 
-      when 1 then @controller.all
-      when 2 then @controller.add
-      when 3 then @controller.destroy
-      when 4 then stop
+      when 1 then @controller.list
+      when 2 then @controller.create
+      # when 3 then @controller.destroy
+      when 3 then stop
     else
       puts "Please press 1, 2, 3 or 4"
     end
