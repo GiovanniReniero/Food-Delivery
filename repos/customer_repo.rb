@@ -8,16 +8,9 @@ class CustomerRepository
 
   def initialize
     @customers = []
-    @csv_path = "../data/customers.csv"
-    @next_id = 1
-    parse
-  end
-  
-  def add(customer)
-    customer.customer_id = @next_id
     @customers << customer
     @next_id += 1
-    store  
+    store
   end
 
   def all
@@ -27,7 +20,6 @@ class CustomerRepository
   def find(index)
     @customers.slice(index)
   end
-  
 
 private
 
@@ -39,7 +31,7 @@ private
       @customers << Customer.new(row)
       @next_id = row[:customer_id]
     end
-    @next_id += 1 unless @customers.size == 0 
+    @next_id += 1 unless @customers.size == 0
   end
   
   def store
@@ -48,10 +40,7 @@ private
 
     CSV.open(filepath, 'wb', csv_options) do |csv|
       csv << ['customer_id', 'customer_name', 'customer_address']
-      # binding.pry
       @customers.each { |customer| csv << ["#{customer.customer_id}", "#{customer.  customer_name}", "#{customer.customer_address}"]}
     end
   end
-
-
 end
