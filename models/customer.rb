@@ -7,9 +7,5 @@ class Customer
     @customer_address = attributes[:customer_address]
     @customer_id = attributes[:customer_id]
   end
-  
-
-
-
 
 end
