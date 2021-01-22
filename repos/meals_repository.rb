@@ -3,8 +3,8 @@ require 'pry-byebug'
 require 'csv'
 
 class MealsRepository
-  attr_accessor :meals
-  attr_reader :csv_file, :next_id
+  attr_accessor :meals, :next_id
+  attr_reader :csv_file
 
   def initialize
     @meals = []
@@ -39,7 +39,7 @@ private
       @meals << Meal.new(row)
       @next_id = row[:meal_id]
     end
-    @next_id += 1
+    @next_id += 1 unless @meals.size == 0
   end
   
   def store
