@@ -26,8 +26,10 @@ class Router
     puts "What do you want to do next?"
     puts "1 - List all meals"
     puts "2 - Add a new meal"
+
     # puts "3 - Delete a meal"
     puts "3 - Exit"
+
     print "> "
   end
 
