@@ -8,9 +8,16 @@ class CustomerRepository
 
   def initialize
     @customers = []
+    @csv_path = "../data/customers.csv"
+    @next_id = 1
+    parse
+  end
+  
+  def add(customer)
+    customer.customer_id = @next_id
     @customers << customer
     @next_id += 1
-    store
+    store  
   end
 
   def all

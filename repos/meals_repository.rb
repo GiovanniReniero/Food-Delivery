@@ -24,11 +24,24 @@ class MealsRepository
     @meals    
   end
   
-  def find(index)
-    i = index - 1
-    @meals.slice(i)
+  def swap(meal_edit)
+    i = meal_edit.meal_id - 1
+    @meals[i] = meal_edit
+  end
+
+  def delete(index)
+    i = index - 1    
+    @meals.delete_at(i)
   end
   
+  
+  def edit(index)
+    i = index - 1    
+    @meals[i]
+  end
+
+
+
 private
 
   def parse
