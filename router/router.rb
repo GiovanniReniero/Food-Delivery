@@ -19,7 +19,6 @@ class Router
       print `clear`
       route_action(action)
     end
-
   end
 
   def display_tasks
@@ -53,6 +52,5 @@ class Router
       puts "Please select 1 to 9"
     end
   end     
-
 end
   

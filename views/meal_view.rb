@@ -1,6 +1,6 @@
 require_relative "../repos/meals_repository.rb"
 require_relative "../models/meal.rb"
-# require_relative "../controllers/meal_controller.rb"
+require 'pry-byebug'
 
 class MealView
 
@@ -25,7 +25,7 @@ class MealView
   def meal_select
     puts "Please select which meal to edit or delete..."    
     print "number > "
-    index = gets.chomp.to_i
+    id = gets.chomp.to_i
   end
 
   def meal_edit(meal)
@@ -39,7 +39,4 @@ class MealView
     meal_id = meal.meal_id
     meal_edit = Meal.new(meal_id: meal_id, name:name, price:price)
   end
-  
-  
-
 end
