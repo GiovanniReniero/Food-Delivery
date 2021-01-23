@@ -8,17 +8,38 @@ class CustomerRepository
 
   def initialize
     @customers = []
+    @csv_path = "../data/customers.csv"
+    @next_id = 1
+    parse
+  end
+  
+  def add(customer)
+    customer.customer_id = @next_id
     @customers << customer
     @next_id += 1
-    store
+    store  
   end
 
   def all
     @customers
   end
 
-  def find(index)
-    @customers.slice(index)
+  def find_customer(id)
+    customer = @customers.select { |customer| customer.customer_id == id }
+    customer[0]
+  end
+
+  def find_index(customer)
+    @customers.find_index(customer)
+  end
+
+  def delete(index)
+    @customers.delete_at(index)
+  end
+  
+  def swap(customer, index)
+    @customers[index] = customer 
+    store
   end
 
 private

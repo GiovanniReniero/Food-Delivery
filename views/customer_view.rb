@@ -24,5 +24,21 @@ class CustomerView
     puts " Alas, this outfit has no customers right now...."
   end
   
+  def customer_select
+    puts "Please select which customer to edit or delete..."    
+    print "number > "
+    index = gets.chomp.to_i
+  end
 
+  def customer_edit(customer)
+    id = customer.customer_id
+    puts "#{customer.customer_id}. #{customer.customer_name}........#{customer.customer_address}"
+    puts "Edit customer name..."
+    print "new name > "
+    name = gets.chomp
+    puts "Edit customer address..."
+    print "new address > "
+    address = gets.chomp
+    Customer.new(customer_id: id, customer_name: name, customer_address: address)
+  end
 end

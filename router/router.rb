@@ -19,7 +19,6 @@ class Router
       print `clear`
       route_action(action)
     end
-
   end
 
   def display_tasks
@@ -27,10 +26,13 @@ class Router
     puts "What do you want to do next?"
     puts "1 - List all meals"
     puts "2 - Add a new meal"
-    puts "3 - List all customers"
-    puts "4 - Add a new customer"
-    # puts "3 - Delete a meal"
-    puts "5 - Exit"
+    puts "3 - Edit a meal"
+    puts "4 - Delete a meal"
+    puts "5 - List all customers"
+    puts "6 - Add a new customer"
+    puts "7 - Edit a customer's details"
+    puts "8 - Delete a customer"
+    puts "9 - Exit"
 
     print "> "
   end
@@ -39,14 +41,16 @@ class Router
     case action 
       when 1 then @meal_controller.list
       when 2 then @meal_controller.create
-        # when 3 then @controller.destroy
-      when 3 then @customer_controller.list
-      when 4 then @customer_controller.create
-      when 5 then stop
+      when 3 then @meal_controller.edit
+      when 4 then @meal_controller.destroy
+      when 5 then @customer_controller.list
+      when 6 then @customer_controller.create
+      when 7 then @customer_controller.edit
+      when 8 then @customer_controller.destroy
+      when 9 then stop
     else
-      puts "Please press 1, 2, 3, 4 or 5"
+      puts "Please select 1 to 9"
     end
   end     
-
 end
   

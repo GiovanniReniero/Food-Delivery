@@ -17,4 +17,25 @@ class MealController
     list = @meals_repository.all
     @meal_view.all_meals(list)
   end
+
+  def destroy
+    list
+    id = @meal_view.meal_select
+    meal = @meals_repository.find_meal(id)
+    index = @meals_repository.find_index(meal)
+    @meals_repository.delete(index)
+    list
+  end
+
+  def edit
+    list
+    id = @meal_view.meal_select
+    meal = @meals_repository.find_meal(id)
+    index = @meals_repository.find_index(meal)
+    meal_edit = @meal_view.meal_edit(meal)
+    @meals_repository.swap(meal_edit, index)
+    list 
+  end
+  
+
 end

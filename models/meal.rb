@@ -8,11 +8,3 @@ class Meal
     @meal_id = attributes[:meal_id]
   end
 end
-
-
-# pizza = Meal.new( name:'Pizza', price: '£5')
-# pasta = Meal.new( name:'Pasta', price: '£15')
-
-# p pizza.meals_id
-# p pasta.price
-

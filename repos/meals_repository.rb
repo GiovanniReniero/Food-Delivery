@@ -1,6 +1,6 @@
 require_relative '../models/meal.rb'
 require 'pry-byebug'
-require 'csv'
+# require 'csv'
 
 class MealsRepository
   attr_accessor :meals, :next_id
@@ -24,11 +24,24 @@ class MealsRepository
     @meals    
   end
   
-  def find(index)
-    i = index - 1
-    @meals.slice(i)
+  def find_index(meal)
+    @meals.find_index(meal)
+  end
+
+  def find_meal(meal_id)
+    meal = @meals.select { |meal| meal.meal_id == meal_id }
+    meal[0]
   end
   
+  def swap(meal_edit, i)
+    @meals[i] = meal_edit
+    store
+  end
+  
+  def delete(index)
+    @meals.delete_at(index)
+  end
+
 private
 
   def parse
@@ -51,6 +64,3 @@ private
     end
   end
 end
-
-# repo = MealsRepository.new
-# p repo
