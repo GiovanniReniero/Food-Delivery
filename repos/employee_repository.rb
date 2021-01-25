@@ -16,8 +16,7 @@ class EmployeeRepository
   
   def add(employee)
     employee.employee_id = @next_id
-    # binding.pry
-    @employees << employee
+    @employees << employee 
     @next_id += 1
     store
   end
@@ -52,6 +51,4 @@ private
       @employees.each { |employee| csv << ["#{employee.employee_username}", "#{employee.employee_password}", "#{employee.employee_role}", "#{employee.employee_id}"] }
     end
   end
-
-
 end
