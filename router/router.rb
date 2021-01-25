@@ -1,4 +1,5 @@
 require_relative "../repos/meals_repository.rb"
+require_relative "../controllers/sessions_controller.rb"
 # require "pry-byebug"
 
 class Router
@@ -6,6 +7,7 @@ class Router
   def initialize(attributes = {})
     @meal_controller = attributes[:meal_controller]
     @customer_controller = attributes[:customer_controller]
+    @sessions_controller = attributes[:sessions_controller]
     @running = true
   end
   
@@ -13,6 +15,7 @@ class Router
     puts "Welcome to Food Delivery!"
     puts  "**********--***********"
 
+    @sessions_controller.login      
     while @running
       display_tasks
       action = gets.chomp.to_i

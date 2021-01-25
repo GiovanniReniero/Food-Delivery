@@ -5,18 +5,19 @@ require "pry-byebug"
 class EmployeeRepository
   attr_accessor :employees
   attr_reader :filepath, :next_id
-  
+
   def initialize
     @employees = []
     @filepath = "../data/employees.csv"
     @next_id = 1
-    parse id File.exist?(@filepath)
+    parse unless File.zero?(@filepath)
   end
   
   
   def add(employee)
     employee.employee_id = @next_id
-    @employees.push(employee)
+    # binding.pry
+    @employees << employee
     @next_id += 1
     store
   end
@@ -25,8 +26,8 @@ class EmployeeRepository
     @employees
   end
 
-  def delete
-    # code
+  def find_employee(username, password)
+    @employees.select { |employee| employee.employee_username == username && employee.employee_password == password }
   end
   
 private
