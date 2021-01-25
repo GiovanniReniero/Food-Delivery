@@ -4,7 +4,7 @@ class Employee
 
   def initialize(attributes = {})
     @employee_username = attributes[:employee_username]
-    @employee_role = attributes[:employee_role]
+    @employee_role = attributes[:employee_role] # manager or delivery_guy
     @employee_password = attributes[:employee_password]
     @employee_id = attributes[:employee_id]    
   end

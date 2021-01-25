@@ -10,7 +10,7 @@ class CustomerRepository
     @customers = []
     @csv_path = "../data/customers.csv"
     @next_id = 1
-    parse
+    parse unless File.zero?(@csv_path)
   end
   
   def add(customer)

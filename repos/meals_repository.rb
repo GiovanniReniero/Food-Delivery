@@ -1,6 +1,6 @@
 require_relative '../models/meal.rb'
 require 'pry-byebug'
-# require 'csv'
+require 'csv'
 
 class MealsRepository
   attr_accessor :meals, :next_id
@@ -10,8 +10,8 @@ class MealsRepository
     @meals = []
     @csv_filepath = '../data/meals.csv'
     @next_id = 1
-    parse
-  end
+    parse unless File.zero?(@csv_filepath)
+    end
   
   def add(meal)
     meal.meal_id = @next_id
