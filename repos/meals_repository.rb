@@ -24,9 +24,9 @@ class MealsRepository
     @meals    
   end
 
-  def all_id
-    @meals.map { |meal| meal.meal_id }
-  end
+  # def all_id
+    # @meals.map { |meal| meal.meal_id }
+  # end
 
   
   def find_index(meal)
@@ -45,6 +45,7 @@ class MealsRepository
   
   def delete(index)
     @meals.delete_at(index)
+    store
   end
 
 private

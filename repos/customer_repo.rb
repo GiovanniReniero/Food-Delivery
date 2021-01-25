@@ -35,6 +35,7 @@ class CustomerRepository
 
   def delete(index)
     @customers.delete_at(index)
+    store
   end
   
   def swap(customer, index)
