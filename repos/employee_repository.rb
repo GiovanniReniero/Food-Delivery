@@ -16,7 +16,6 @@ class EmployeeRepository
   
   def add(employee)
     employee.employee_id = @next_id
-    # binding.pry
     @employees << employee
     @next_id += 1
     store
