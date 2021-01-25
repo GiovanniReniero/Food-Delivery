@@ -27,7 +27,7 @@ class MealView
     print "number > "
     id = gets.chomp.to_i
   end
-
+  
   def meal_edit(meal)
     puts "#{meal.meal_id}. #{meal.name}...£#{meal.price}"
     puts "Ok, let's edit the name..."
@@ -39,4 +39,12 @@ class MealView
     meal_id = meal.meal_id
     meal_edit = Meal.new(meal_id: meal_id, name:name, price:price)
   end
+  
+  def select_available
+    puts "Select from available list"
+    print "number > "
+    id = gets.chomp.to_i
+  end
+  
+  
 end

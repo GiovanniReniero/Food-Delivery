@@ -23,6 +23,11 @@ class MealsRepository
   def all
     @meals    
   end
+
+  def all_id
+    @meals.map { |meal| meal.meal_id }
+  end
+
   
   def find_index(meal)
     @meals.find_index(meal)

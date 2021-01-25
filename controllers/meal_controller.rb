@@ -20,11 +20,16 @@ class MealController
 
   def destroy
     list
+    available = @meals_repository.all_id 
     id = @meal_view.meal_select
-    meal = @meals_repository.find_meal(id)
-    index = @meals_repository.find_index(meal)
-    @meals_repository.delete(index)
-    list
+    unless available.include(id)
+      @meal_view.select_available
+    else
+      meal = @meals_repository.find_meal(id)
+      index = @meals_repository.find_index(meal)
+      @meals_repository.delete(index)
+      list
+    end
   end
 
   def edit
