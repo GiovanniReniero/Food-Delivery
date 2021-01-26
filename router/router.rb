@@ -32,6 +32,7 @@ class Router
             route_delivery_guy_action(action)
           end
         end
+        print `clear`
       end
     end
   end
