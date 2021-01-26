@@ -9,4 +9,8 @@ class Employee
     @employee_id = attributes[:employee_id]    
   end
 
+  def manager?
+    self.employee_role == 'manager'
+  end
+
 end

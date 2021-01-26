@@ -26,6 +26,7 @@ class CustomerController
     @customer_repository.delete(index)
     list
   end
+
   
   def edit
     list
