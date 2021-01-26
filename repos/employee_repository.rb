@@ -35,6 +35,10 @@ class EmployeeRepository
   def find_employee_by_password(password)
     @employees.find { |employee| employee.employee_password == password }
   end
+
+  def find_employee_by_id(employee_id)
+    @employees.find { |employee| employee.employee_id == employee_id }
+  end
   
   def all_delivery_guys
     @employees.select { |employee| employee.employee_role == 'delivery_guy' }

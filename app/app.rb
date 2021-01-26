@@ -1,6 +1,7 @@
 require_relative "../repos/meals_repository.rb"
 require_relative "../repos/customer_repo.rb"
 require_relative "../repos/employee_repository.rb"
+require_relative "../repos/order_repository.rb"
 
 require_relative "../views/meal_view.rb"
 require_relative "../views/customer_view.rb"
@@ -20,6 +21,9 @@ customer_view = CustomerView.new('')
 
 session_view = SessionView.new('')
 employee_repository = EmployeeRepository.new
+
+order_repository = OrderRepository.new( meal_repository: meals_repository, customer_repository: customer_repository, employee_repository: employee_repository )
+
 
 meal_controller = MealController.new(meal_view: meal_view, meals_repository: meals_repository) 
 
