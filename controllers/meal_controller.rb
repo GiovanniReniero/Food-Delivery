@@ -20,9 +20,7 @@ class MealController
 
   def destroy
     list
-    # available = @meals_repository.all_id 
     id = @meal_view.meal_select
-    # @meal_view.select_available
     meal = @meals_repository.find_meal(id)
     index = @meals_repository.find_index(meal)
     @meals_repository.delete(index)

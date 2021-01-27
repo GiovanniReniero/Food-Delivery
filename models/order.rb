@@ -5,7 +5,7 @@ class Order
     @meal = attributes[:meal] 
     @customer = attributes[:customer]
     @employee = attributes[:employee]
-    @order_id
+    @order_id = attributes[:order_id]
     @delivered = false
   end
   
