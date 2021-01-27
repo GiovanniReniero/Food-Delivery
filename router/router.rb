@@ -1,6 +1,7 @@
 require_relative "../repos/meals_repository.rb"
 require_relative "../models/employee.rb"
 require_relative "../controllers/sessions_controller.rb"
+require_relative "../controllers/order_controller.rb"
 # require "pry-byebug"
 
 class Router
@@ -9,6 +10,7 @@ class Router
     @meal_controller = attributes[:meal_controller]
     @customer_controller = attributes[:customer_controller]
     @sessions_controller = attributes[:sessions_controller]
+    @order_controller = attributes[:order_controller]
     @employee
     @running = true
   end
@@ -17,8 +19,8 @@ class Router
     puts "Welcome to Food Delivery!"
     puts  "**********--***********"
     while @running
+      @employee = @sessions_controller.login
       loop do
-        @employee = @sessions_controller.login
         unless @employee == nil
           if @employee.manager?      
             display_tasks_manager
@@ -52,8 +54,8 @@ class Router
       
   def route_delivery_guy_action(action)
     case action
-      when 1 then # @employee_controller something
-      when 2 then # @employee_controller something
+      when 1 then @order_controller.delivery_guy_undelivered
+      when 2 then #@order_controller.delivered
       when 3 then @employee = nil
       when 4 then exit
     else
@@ -66,17 +68,19 @@ class Router
     puts "Wecome Boss!"
     puts ""
     puts "What do you want to do next?"
-    puts "1 - List all meals"
-    puts "2 - Add a new meal"
-    puts "3 - Edit a meal"
-    puts "4 - Delete a meal"
-    puts "5 - List all customers"
-    puts "6 - Add a new customer"
-    puts "7 - Edit a customer's details"
-    puts "8 - Delete a customer"
-    puts "9 - Sign Out"
-    puts "0 - Exit"
-
+      puts "1 - List all meals"
+      puts "2 - Add a new meal"
+      puts "3 - Edit a meal"
+      puts "4 - Delete a meal"
+      puts "5 - List all customers"
+      puts "6 - Add a new customer"
+      puts "7 - Edit a customer's details"
+      puts "8 - Delete a customer"
+      puts "9 - List undelivered orders"
+      puts "10 - Add a new order"
+      puts "11 - Sign Out"
+      puts "12- Exit"
+      
     print "> "
   end
 
@@ -90,8 +94,10 @@ class Router
       when 6 then @customer_controller.create
       when 7 then @customer_controller.edit
       when 8 then @customer_controller.destroy
-      when 9 then @employee = nil
-      when 0 then exit 
+      when 9 then @order_controller.list_undelivered
+      when 10 then @order_controller.create
+      when 11 then @employee = nil
+      when 12 then exit 
     else
       puts "Please select 1 to 9"
     end
