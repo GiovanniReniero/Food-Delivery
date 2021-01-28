@@ -40,10 +40,18 @@ def add(order)
   end
 
   def find_undelivered_by_employee(employee)
-    @orders.select { |order| order.employee == employee}
+    @orders.select { |order| order.employee == employee && order.delivered == false}
+  end
+
+  def find_by_order_id(order_id)
+    order = @orders.find { |order| order.order_id == order_id }
   end
   
-
+  def delivered(order)
+    order.delivered = true
+    store
+  end
+  
 private
 
   def parse

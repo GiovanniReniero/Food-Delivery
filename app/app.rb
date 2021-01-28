@@ -37,7 +37,7 @@ sessions_controller = SessionsController.new(session_view: session_view, employe
 
 employee_controller = EmployeeController.new(employee_view: employee_view, employee_repository: employee_repository)
 
-order_controller = OrderController.new(order_repository: order_repository, order_view: order_view, meal_controller: meal_controller, customer_controller: customer_controller, employee_controller: employee_controller, meals_repository: meals_repository, customer_repository: customer_repository, employee_repository: employee_repository)
+order_controller = OrderController.new(order_repository: order_repository, order_view: order_view, session_view: session_view,  meal_controller: meal_controller, customer_controller: customer_controller, employee_controller: employee_controller, meals_repository: meals_repository, customer_repository: customer_repository, employee_repository: employee_repository)
 
 start = Router.new(meal_controller: meal_controller, customer_controller: customer_controller, sessions_controller: sessions_controller, order_controller: order_controller)
 

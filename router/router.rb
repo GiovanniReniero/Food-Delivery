@@ -29,7 +29,7 @@ class Router
             action = gets.chomp.to_i
             print `clear`
             route_manager_action(action)
-          elsif @employee.delivery_guy? # write code for this
+          elsif @employee.delivery_guy?
             display_tasks_delivery_guy
             action = gets.chomp.to_i
             print `clear`
@@ -43,7 +43,7 @@ class Router
 
   def display_tasks_delivery_guy
     puts ""
-    puts "Wecome #{@employee.employee_username}!"
+    puts "Welcome #{@employee.employee_username}!"
     puts ""
     puts "What do you want to do next?"
     puts "1 - List my Orders"
@@ -57,7 +57,7 @@ class Router
   def route_delivery_guy_action(action)
     case action
       when 1 then @order_controller.delivery_guy_undelivered(@employee)
-      when 2 then #@order_controller.delivered
+      when 2 then @order_controller.mark_as_delivered(@employee)
       when 3 then @employee = nil
       when 4 then exit
     else
@@ -67,7 +67,7 @@ class Router
 
   def display_tasks_manager
     puts ""
-    puts "Wecome Boss!"
+    puts "Welcome Boss!"
     puts ""
     puts "What do you want to do next?"
       puts "1 - List all meals"

@@ -13,8 +13,6 @@ class OrderView
   
   def all_orders(list)
     puts "All orders ..."
-    list.each { |order| puts " #{order.order_id}.  #{order.meal.name} /customer: #{order.customer.customer_name} /delivery guy: #{order.employee.employee_username} /status:#{order.delivered}" }  
+    list.each { |order| order.delivered == false ? (puts " [ ] #{order.order_id}.  #{order.meal.name} /customer: #{order.customer.customer_name} / * #{order.employee.employee_username}* ")  : (puts " [X] #{order.order_id}.  #{order.meal.name} /customer: #{order.customer.customer_name} / * #{order.employee.employee_username}* ") }  
   end
-  
-
 end

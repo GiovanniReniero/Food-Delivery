@@ -13,6 +13,5 @@ class SessionView
   def not_registered
     puts "You are not a registered employee, please try again"    
   end
-  
-
 end
+
