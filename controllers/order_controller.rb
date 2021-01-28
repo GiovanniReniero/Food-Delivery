@@ -44,6 +44,7 @@ class OrderController
   
   def delivery_guy_undelivered(employee)
     list = @order_repository.find_undelivered_by_employee(employee)
+    @order_view.all_orders(list)
   end
   
 

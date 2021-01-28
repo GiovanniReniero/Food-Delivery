@@ -39,8 +39,8 @@ def add(order)
     @orders.select { |order| order.delivered == false }
   end
 
-  def find_undelivere_by_employee(employee)
-    #stuff
+  def find_undelivered_by_employee(employee)
+    @orders.select { |order| order.employee == employee}
   end
   
 

@@ -25,7 +25,7 @@ class EmployeeRepository
   end
 
   def find_employee(username, password)
-    @employees.select { |employee| employee.employee_username == username && employee.employee_password == password }
+    @employees.find { |employee| employee.employee_username == username && employee.employee_password == password }
   end
 
   def find_employee_by_username(username)
