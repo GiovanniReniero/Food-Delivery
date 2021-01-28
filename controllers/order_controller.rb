@@ -1,5 +1,6 @@
 require_relative '../models/order.rb'
 require 'pry-byebug'
+
 class OrderController
   attr_reader :order_repository, :order_view, :meal_controller, :customer_controller, :employee_controller
   
@@ -9,6 +10,7 @@ class OrderController
     @customer_repository = attributes[:customer_repository]
     @employee_repository = attributes[:employee_repository]
     @order_view = attributes[:order_view]
+    @session_view = attributes[:session_view]
     @meal_controller = attributes[:meal_controller]
     @customer_controller = attributes[:customer_controller]
     @employee_controller = attributes[:employee_controller]
@@ -46,10 +48,14 @@ class OrderController
     list = @order_repository.find_undelivered_by_employee(employee)
     @order_view.all_orders(list)
   end
-  
 
-  def delivered
-
+  def mark_as_delivered(employee)
+    delivery_guy_undelivered(employee) 
+    order_id = @session_view.ask_for('delivered').to_i
+    order = @order_repository.find_by_order_id(order_id)
+    # binding.pry
+    @order_repository.delivered(order)
+    delivery_guy_undelivered(employee) 
+    
   end
-
 end
