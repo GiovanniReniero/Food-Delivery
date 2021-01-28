@@ -2,7 +2,7 @@ require_relative "../repos/meals_repository.rb"
 require_relative "../models/employee.rb"
 require_relative "../controllers/sessions_controller.rb"
 require_relative "../controllers/order_controller.rb"
-# require "pry-byebug"
+require "pry-byebug"
 
 class Router
   
@@ -20,15 +20,17 @@ class Router
     puts  "**********--***********"
     while @running
       @employee = @sessions_controller.login
-      loop do
-        unless @employee == nil
-          if @employee.manager?      
+      unless @employee == nil
+        loop do
+          if @employee == nil
+            break 
+          elsif @employee.manager?      
             display_tasks_manager
             action = gets.chomp.to_i
             print `clear`
             route_manager_action(action)
-          else
-            display_tasks_delivery_guy(@employee)
+          elsif @employee.delivery_guy? # write code for this
+            display_tasks_delivery_guy
             action = gets.chomp.to_i
             print `clear`
             route_delivery_guy_action(action)
@@ -39,9 +41,9 @@ class Router
   end
 
 
-  def display_tasks_delivery_guy(employee)
+  def display_tasks_delivery_guy
     puts ""
-    puts "Wecome #{employee.employee_username}!"
+    puts "Wecome #{@employee.employee_username}!"
     puts ""
     puts "What do you want to do next?"
     puts "1 - List my Orders"
@@ -54,7 +56,7 @@ class Router
       
   def route_delivery_guy_action(action)
     case action
-      when 1 then @order_controller.delivery_guy_undelivered
+      when 1 then @order_controller.delivery_guy_undelivered(@employee)
       when 2 then #@order_controller.delivered
       when 3 then @employee = nil
       when 4 then exit

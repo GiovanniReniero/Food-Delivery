@@ -13,4 +13,8 @@ class Employee
     self.employee_role == 'manager'
   end
 
+  def delivery_guy?
+    self.employee_role == 'delivery_guy'
+  end
+
 end

@@ -12,13 +12,12 @@ class SessionsController
   def login
     username = @session_view.ask_for('username')
     password = @session_view.ask_for('password')
-    result = @employee_repository.find_employee(username, password)
+    employee = @employee_repository.find_employee(username, password)
     # binding.pry
-    if result.empty? 
+    if employee == nil 
       @session_view.not_registered 
-      login
     end
-    employee = result[0] 
+    employee 
   end
 
   # def sign_out
