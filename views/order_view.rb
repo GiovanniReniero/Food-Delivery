@@ -1,3 +1,5 @@
+require 'pry-byebug'
+
 class OrderView
  attr_reader :order_view
 
@@ -13,6 +15,6 @@ class OrderView
   
   def all_orders(list)
     puts "All orders ..."
-    list.each { |order| order.delivered == false ? (puts " [ ] #{order.order_id}.  #{order.meal.name} /customer: #{order.customer.customer_name} / * #{order.employee.employee_username}* ")  : (puts " [X] #{order.order_id}.  #{order.meal.name} /customer: #{order.customer.customer_name} / * #{order.employee.employee_username}* ") }  
+    list.each { |order| order.delivered == false ? (puts " [ ]  #{order.order_id}. *#{order.employee.employee_username}* / #{order.meal.name} /customer: #{order.customer.customer_name} ")  : (puts " [X] #{order.order_id}. *#{order.employee.employee_username}*  #{order.meal.name} /customer: #{order.customer.customer_name} / *#{order.employee.employee_username}* ") }  
   end
 end

@@ -30,7 +30,6 @@ class OrderController
     employee = @employee_repository.find_employee_by_id(employee_id)
 
     order = Order.new( meal: meal, customer: customer, employee: employee )
-    # binding.pry
     @order_repository.add(order)
   end
   
@@ -53,8 +52,9 @@ class OrderController
     delivery_guy_undelivered(employee) 
     order_id = @session_view.ask_for('delivered').to_i
     order = @order_repository.find_by_order_id(order_id)
-    # binding.pry
     @order_repository.delivered(order)
+    # binding.pry
+    @order_repository.swap_order(order_id, order)
     delivery_guy_undelivered(employee) 
     
   end
