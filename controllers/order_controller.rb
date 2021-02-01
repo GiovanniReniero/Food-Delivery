@@ -58,4 +58,14 @@ class OrderController
     delivery_guy_undelivered(employee) 
     
   end
+
+  def delete_orders
+    answer = @order_view.confirm
+    if answer == 'y'
+      @order_repository.delete_orders
+    else
+      list
+    end
+  end
+  
 end

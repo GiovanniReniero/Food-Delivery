@@ -25,6 +25,12 @@ class OrderView
     list.each { |order|  puts "#{order.order_id}. *#{order.employee.employee_username}* / #{order.meal.name} /customer: #{order.customer.customer_name} "}
   end
   
-
+  def confirm
+    puts "Are you sure you want to delete allorders? Orders will be permanently deleted"
+    print "y / n >"  
+    answer = gets.chomp
+    
+  end
+  
 
 end
