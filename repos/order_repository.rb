@@ -55,6 +55,11 @@ def add(order)
     @orders[index] = order
   end
   
+  def delete_orders
+    @orders = []
+    store
+  end
+  
 
 private
 

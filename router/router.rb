@@ -81,7 +81,8 @@ class Router
       puts "9 - List all orders"
       puts "10 - List undelivered orders"
       puts "11 - Add a new order"
-      puts "12 - Sign Out"
+      puts "12 - Delete all orders"
+      puts "111 - Sign Out"
       puts "100- Exit"
       
     print "> "
@@ -100,7 +101,8 @@ class Router
       when 9 then @order_controller.list
       when 10 then @order_controller.list_undelivered
       when 11 then @order_controller.create
-      when 12 then @employee = nil
+      when 12 then @order_controller.delete_orders
+      when 111 then @employee = nil
       when 100 then exit 
     else
       puts "Please select 1 to 9"
