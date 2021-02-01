@@ -78,10 +78,11 @@ class Router
       puts "6 - Add a new customer"
       puts "7 - Edit a customer's details"
       puts "8 - Delete a customer"
-      puts "9 - List undelivered orders"
-      puts "10 - Add a new order"
-      puts "11 - Sign Out"
-      puts "12- Exit"
+      puts "9 - List all orders"
+      puts "10 - List undelivered orders"
+      puts "11 - Add a new order"
+      puts "12 - Sign Out"
+      puts "100- Exit"
       
     print "> "
   end
@@ -96,10 +97,11 @@ class Router
       when 6 then @customer_controller.create
       when 7 then @customer_controller.edit
       when 8 then @customer_controller.destroy
-      when 9 then @order_controller.list_undelivered
-      when 10 then @order_controller.create
-      when 11 then @employee = nil
-      when 12 then exit 
+      when 9 then @order_controller.list
+      when 10 then @order_controller.list_undelivered
+      when 11 then @order_controller.create
+      when 12 then @employee = nil
+      when 100 then exit 
     else
       puts "Please select 1 to 9"
     end

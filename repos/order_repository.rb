@@ -24,19 +24,18 @@ class OrderRepository
 end
 
 def all
-  @orders
+    @orders
 end
 
 def add(order)
   order.order_id = @next_id
   @orders << order
   @next_id += 1
-  # binding.pry
     store
   end
 
   def find_undelivered
-    @orders.select { |order| order.delivered == false }
+    jack = @orders.select { |order| order.delivered == false }
   end
 
   def find_undelivered_by_employee(employee)
@@ -49,10 +48,19 @@ def add(order)
   
   def delivered(order)
     order.delivered = true
-    store
+  end
+
+  def swap_order(order_id, order)
+    index = @orders.find_index { |order| order.order_id == order_id }
+    @orders[index] = order
   end
   
+
 private
+
+  def true?(string)
+    string == 'true'
+  end
 
   def parse
     csv_options = { headers: :first_row, header_converters: :symbol }
@@ -63,7 +71,7 @@ private
       meal = @meals_repository.find_meal(row[:meal].to_i)
       customer = @customer_repository.find_customer(row[:customer].to_i)
       employee = @employee_repository.find_employee_by_id(row[:employee].to_i)
-      delivered = row[:delivered] == true # changes value to boolean from string.
+      delivered = true?(row[:delivered]) # changes value to boolean from string.Needs to be investigated
       @orders << Order.new(order_id: order_id, meal: meal, customer: customer, employee: employee, delivered: delivered)
       @next_id = row[:order_id].to_i
     end
