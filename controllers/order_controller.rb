@@ -45,7 +45,7 @@ class OrderController
   
   def delivery_guy_undelivered(employee)
     list = @order_repository.find_undelivered_by_employee(employee)
-    @order_view.all_orders(list)
+    @order_view.delivery_guy_orders(list)
   end
 
   def mark_as_delivered(employee)

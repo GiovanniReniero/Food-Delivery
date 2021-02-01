@@ -6,7 +6,7 @@ class Order
     @customer = attributes[:customer]
     @employee = attributes[:employee]
     @order_id = attributes[:order_id]
-    @delivered = false
+    @delivered = attributes[:delivered] || false
   end
   
 end

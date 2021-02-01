@@ -58,6 +58,10 @@ def add(order)
 
 private
 
+  def true?(string)
+    string == 'true'
+  end
+
   def parse
     csv_options = { headers: :first_row, header_converters: :symbol }
     filepath = @filepath
@@ -67,11 +71,11 @@ private
       meal = @meals_repository.find_meal(row[:meal].to_i)
       customer = @customer_repository.find_customer(row[:customer].to_i)
       employee = @employee_repository.find_employee_by_id(row[:employee].to_i)
-      delivered = row[:delivered] == true # changes value to boolean from string.Needs to be investigated
+      delivered = true?(row[:delivered]) # changes value to boolean from string.Needs to be investigated
       @orders << Order.new(order_id: order_id, meal: meal, customer: customer, employee: employee, delivered: delivered)
       @next_id = row[:order_id].to_i
     end
-    binding.pry
+    # binding.pry
     @next_id += 1 unless @orders.size == 0 
   end
 
