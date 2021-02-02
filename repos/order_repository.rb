@@ -53,6 +53,7 @@ def add(order)
   def swap_order(order_id, order)
     index = @orders.find_index { |order| order.order_id == order_id }
     @orders[index] = order
+    store
   end
   
   def delete_orders
