@@ -15,5 +15,4 @@ class EmployeeController
     list = @employee_repository.all_delivery_guys
     @employee_view.all_employees(list)
   end
-
 end

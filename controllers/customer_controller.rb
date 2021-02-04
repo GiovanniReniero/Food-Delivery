@@ -27,7 +27,6 @@ class CustomerController
     list
   end
 
-  
   def edit
     list
     id = @customer_view.customer_select

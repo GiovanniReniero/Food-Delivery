@@ -1,5 +1,4 @@
 require_relative '../models/order.rb'
-require 'pry-byebug'
 
 class OrderController
   attr_reader :order_repository, :order_view, :meal_controller, :customer_controller, :employee_controller
@@ -53,7 +52,6 @@ class OrderController
     order_id = @session_view.ask_for('delivered').to_i
     order = @order_repository.find_by_order_id(order_id)
     @order_repository.delivered(order)
-    # binding.pry
     @order_repository.swap_order(order_id, order)
     delivery_guy_undelivered(employee) 
     
@@ -67,5 +65,4 @@ class OrderController
       list
     end
   end
-  
 end
