@@ -1,5 +1,3 @@
-require 'pry-byebug'
-
 class OrderView
  attr_reader :order_view
 
@@ -31,6 +29,4 @@ class OrderView
     answer = gets.chomp
     
   end
-  
-
 end

@@ -1,5 +1,4 @@
 require_relative "../models/customer.rb"
-require 'pry-byebug'
 class CustomerView
 
   def initialize(customer_view)

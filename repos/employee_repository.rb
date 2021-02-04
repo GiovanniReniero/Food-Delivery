@@ -1,6 +1,5 @@
 require "csv"
 require_relative "../models/employee.rb"
-require "pry-byebug"
 
 class EmployeeRepository
   attr_accessor :employees
@@ -12,13 +11,6 @@ class EmployeeRepository
     @next_id = 1
     parse unless File.zero?(@filepath)
   end
-  
-  # def add(employee)
-    # employee.employee_id = @next_id
-    # @employees << employee
-    # @next_id += 1
-    # store
-  # end
   
   def all
     @employees
@@ -44,7 +36,6 @@ class EmployeeRepository
     @employees.select { |employee| employee.employee_role == 'delivery_guy' }
   end
   
-  
 private
 
   def parse
@@ -57,15 +48,4 @@ private
     end 
     @next_id += 1 unless @employees.size == 0
   end
-
-  # def store
-    # csv_options = { col_sep: ',', force_quotes: true, quote_char: '"' }
-    # filepath = @filepath
-# 
-    # CSV.open(filepath, 'wb', csv_options) do |csv|
-      # csv << ['employee_username', 'employee_password', 'employee_role', 'employee_id']
-      # @employees.each { |employee| csv << ["#{employee.employee_username}", "#{employee.employee_password}", "#{employee.employee_role}", "#{employee.employee_id}"] }
-    # end
-  # end
-
 end

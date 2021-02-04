@@ -1,6 +1,5 @@
 require_relative '../models/customer.rb'
 require 'csv'
-require 'pry-byebug'
 
 class CustomerRepository
   attr_accessor :customers, :next_id
