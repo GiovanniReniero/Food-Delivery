@@ -1,6 +1,5 @@
 require_relative "../repos/meals_repository.rb"
 require_relative "../models/meal.rb"
-require 'pry-byebug'
 
 class MealView
 
@@ -45,6 +44,4 @@ class MealView
     print "number > "
     id = gets.chomp.to_i
   end
-  
-  
 end

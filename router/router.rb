@@ -2,7 +2,6 @@ require_relative "../repos/meals_repository.rb"
 require_relative "../models/employee.rb"
 require_relative "../controllers/sessions_controller.rb"
 require_relative "../controllers/order_controller.rb"
-require "pry-byebug"
 
 class Router
   
@@ -39,7 +38,6 @@ class Router
       end
     end
   end
-
 
   def display_tasks_delivery_guy
     puts ""
@@ -108,5 +106,4 @@ class Router
       puts "Please select 1 to 9"
     end
   end     
-
 end

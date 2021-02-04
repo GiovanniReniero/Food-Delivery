@@ -1,5 +1,4 @@
 require_relative '../models/meal.rb'
-require 'pry-byebug'
 require 'csv'
 
 class MealsRepository
@@ -11,7 +10,7 @@ class MealsRepository
     @csv_filepath = '../data/meals.csv'
     @next_id = 1
     parse unless File.zero?(@csv_filepath)
-    end
+  end
   
   def add(meal)
     meal.meal_id = @next_id
@@ -24,11 +23,6 @@ class MealsRepository
     @meals    
   end
 
-  # def all_id
-    # @meals.map { |meal| meal.meal_id }
-  # end
-
-  
   def find_index(meal)
     @meals.find_index(meal)
   end

@@ -1,4 +1,3 @@
-
 class SessionView
   def initialize(session_view)
     @session_view = session_view
@@ -14,4 +13,3 @@ class SessionView
     puts "You are not a registered employee, please try again"    
   end
 end
-
