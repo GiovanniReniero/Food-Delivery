@@ -1,5 +1,4 @@
 require_relative "../repos/employee_repository.rb"
-require 'pry-byebug'
 
 class SessionsController
   attr_reader :session_view, :employee_repository
@@ -19,9 +18,4 @@ class SessionsController
     end
     employee 
   end
-
-  # def sign_out
-    # employee = nil
-  # end
-
 end

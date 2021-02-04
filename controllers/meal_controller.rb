@@ -36,6 +36,4 @@ class MealController
     @meals_repository.swap(meal_edit, index)
     list 
   end
-  
-
 end

@@ -8,5 +8,4 @@ class Order
     @order_id = attributes[:order_id]
     @delivered = attributes[:delivered] || false
   end
-  
 end
